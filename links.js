@@ -54,6 +54,8 @@ nightmare
                     msg = 'Promise rejected Error: ';
                     if ((_.has(result.reason().response, 'status'))) {
                         msg += [ result.reason().config.url, result.reason().response.status, result.reason().response.statusText].join(' ');
+                    } else {
+                        msg += result.reason();
                     }
                     console.log(colors.red(msg));
                 }
