@@ -47,12 +47,14 @@ nightmare
                     if ((_.has(result.value(), 'status'))) {
                         msg += [ result.value().config.url, result.value().status, result.value().statusText].join(' ');
                     } else {
-                        msg += colors.yellow('Irregular Link: ' + result.value());
+                        msg += colors.gray('Irregular Link: ' + result.value());
                     }
                     console.log(msg);
                 } else {
                     msg = 'Promise rejected Error: ';
-                    msg += [ result.reason().config.url, result.reason().response.status, result.reason().response.statusText].join(' ');
+                    if ((_.has(result.reason().response, 'status'))) {
+                        msg += [ result.reason().config.url, result.reason().response.status, result.reason().response.statusText].join(' ');
+                    }
                     console.log(colors.red(msg));
                 }
             })
